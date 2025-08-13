@@ -4,7 +4,7 @@
   flex-direction: column;
   background-size: cover;
   align-items: column;
-  background-image: url('./image4.jpg');
+  background-image: url('./image7.jpeg');
   color:white;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .menu-container a:hover {
-  color: #00c8ff;         /* hover color */
+  color: #00ff84;         /* hover color */
 }
 
 
@@ -72,13 +72,13 @@
 .bubbles-container {
   display: flex;               /* met les bulles sur la même ligne */
   justify-content: space-between; /* espace entre chaque bulle */
-  width: 400px;                /* largeur totale du conteneur */
+  width: 700px;                /* largeur totale du conteneur */
   margin-top: 50px;            /* espace sous le slogan */
 }
 
 .bubble {
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.2);
   border: 2px solid white;
