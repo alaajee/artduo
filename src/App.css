@@ -1,0 +1,104 @@
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  align-items: column;
+  background-image: url('./image4.jpg');
+  color:white;
+}
+
+.App-header {
+  display: flex;
+  justify-content: center;  /* centre le menu horizontalement */
+  align-items: center;
+  height: 100px;            /* hauteur du header */
+  position: relative;       /* pour rester au-dessus de l'image */
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.menu-container {
+  background-color: white; /* fond semi-transparent */
+  padding: 10px 30px;                   /* espace autour des liens */
+  width: 1400px;   
+  height: 30px;  
+  margin-top: 5%;      /* coins arrondis */
+  display: flex;
+  gap: 20px;   
+  text-align: center;   
+  color: black;                       /* espace entre les liens */
+}
+
+.menu-container a {
+  color: rgb(27, 27, 27);           /* text white */
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  padding: 5px 20px; 
+  margin-left: 13%;             /* espace autour du texte */
+}
+
+.menu-container a:hover {
+  color: #00c8ff;         /* hover color */
+}
+
+
+.App-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* centre horizontalement */
+  justify-content: start;    /* commence depuis le haut */
+  margin-top: 150px;         /* espace sous le header */
+  text-align: center;
+}
+
+.slogan{
+  font-size: 2rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.bubbles-container {
+  display: flex;               /* met les bulles sur la même ligne */
+  justify-content: space-between; /* espace entre chaque bulle */
+  width: 400px;                /* largeur totale du conteneur */
+  margin-top: 50px;            /* espace sous le slogan */
+}
+
+.bubble {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  opacity: 0;
+  animation: floatUp 1s ease-out forwards;
+}
+
+/* Délais pour chaque bulle */
+.bubble:nth-child(1) { animation-delay: 1.5s; }
+.bubble:nth-child(2) { animation-delay: 2s; }
+.bubble:nth-child(3) { animation-delay: 2.5s; }
+
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+  
