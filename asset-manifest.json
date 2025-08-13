@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/artduo/static/css/main.0cb7a3a9.css",
+    "main.css": "/artduo/static/css/main.dd4072b3.css",
     "main.js": "/artduo/static/js/main.73dc33cb.js",
     "static/js/453.0719755e.chunk.js": "/artduo/static/js/453.0719755e.chunk.js",
-    "static/media/image4.jpg": "/artduo/static/media/image4.87612e533eb1ce723494.jpg",
+    "static/media/image7.jpeg": "/artduo/static/media/image7.b146fb5cfb3082deae11.jpeg",
     "index.html": "/artduo/index.html",
-    "main.0cb7a3a9.css.map": "/artduo/static/css/main.0cb7a3a9.css.map",
+    "main.dd4072b3.css.map": "/artduo/static/css/main.dd4072b3.css.map",
     "main.73dc33cb.js.map": "/artduo/static/js/main.73dc33cb.js.map",
     "453.0719755e.chunk.js.map": "/artduo/static/js/453.0719755e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0cb7a3a9.css",
+    "static/css/main.dd4072b3.css",
     "static/js/main.73dc33cb.js"
   ]
 }
