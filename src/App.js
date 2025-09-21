@@ -1,28 +1,42 @@
 import './App.css';
+import picture from './logo_no_bg.png';
+import picture1 from './pic.jpeg';
 
 function App() {
   return (
     <div className="App">
-    <header className="App-header">
-      <div className="menu-container">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Services</a>
-        <a href="/gallery">Gallery</a>
-      </div>
-    </header>
-    <div className="App-body">
-      <div className="slogan">
-        <h1>L'Art en Duo</h1>
-      </div>
+      <header className="App-header">
+        <img src={picture} className="App-logo" alt="logo" />
 
-      <div className="bubbles-container">
-        <div className="bubble">Feel</div>
-        <div className="bubble">Create</div>
-        <div className="bubble">Reconnect</div>
+        <a href='#' className="App-link"> HOME </a>
+        <a href='#' className="App-link"> ABOUT US </a>
+        <a href='#' className="App-link"> SERVICES </a>
+        <a href='#' className="App-link"> ART STORE </a>
+        <a href='#' className="App-link"> CONTACT US </a>
+
+      </header>
+
+      
+     
+    <div className="image-container">
+      <img src={picture1} className="App-pic" alt="picture" />
+      <div className="text-block">
+        Feel, Create, Reconnect
       </div>
     </div>
 
+    <div className="TwoPic">
+      <div className="text-block1">
+      <h1 className="title1">Our services</h1>
+      <img src={picture1} className="App-pic1" alt="picture" />
+      </div>
+      <div className="text-block2">
+      <h1 className="title2">Client Testimonials</h1>
+      <img src={picture1} className="App-pic1" alt="picture" />
+      </div>
+    </div>
+
+    
     </div>
   );
 }
