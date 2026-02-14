@@ -6,15 +6,16 @@ import Home from './Home';
 import AboutUs from './AboutUs';
 import Services from './Services';
 import reportWebVitals from './reportWebVitals';
+import { Link } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <HashRouter>  {/* Changed from BrowserRouter to HashRouter */}
       <Routes>
-      <a href='#/' className="App-link"> HOME </a>
-      <a href='#/aboutus' className="App-link"> ABOUT US </a>
-      <a href='#/services' className="App-link"> SERVICES </a>
+      <Link to="/" className="App-link"> HOME </Link>
+      <Link to="/aboutus" className="App-link"> ABOUT US </Link>
+      <Link to="/services" className="App-link"> SERVICES </Link>
         {/* Add more routes as needed */}
         {/* <Route path="/artstore" element={<ArtStore />} /> */}
         {/* <Route path="/contact" element={<Contact />} /> */}
