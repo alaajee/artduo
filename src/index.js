@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';  // Changed to HashRouter
 import './index.css';
 import Home from './Home';
 import AboutUs from './AboutUs';
@@ -10,16 +10,16 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>  {/* Changed from BrowserRouter to HashRouter */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/services" element={<Services />} />
+      <a href='#/' className="App-link"> HOME </a>
+      <a href='#/aboutus' className="App-link"> ABOUT US </a>
+      <a href='#/services' className="App-link"> SERVICES </a>
         {/* Add more routes as needed */}
         {/* <Route path="/artstore" element={<ArtStore />} /> */}
         {/* <Route path="/contact" element={<Contact />} /> */}
       </Routes>
-    </BrowserRouter>
+    </HashRouter>  {/* Changed from BrowserRouter to HashRouter */}
   </React.StrictMode>
 );
 
