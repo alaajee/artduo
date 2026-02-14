@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -10,12 +9,13 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow-x: hidden; /* Empêche le scroll horizontal */
+  overflow-x: hidden;
 }
 
 .App{
   background-color: rgb(255,250,230);
-  height: 100%;
+  min-height: 100vh;
+  padding-bottom: 50px;
 }
 
 .App-header {
@@ -35,18 +35,63 @@ html, body {
   margin: auto;
   text-decoration: none;
   color: green;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-/* .App-pic{
-  width: 100%;
-  height: auto;
-  margin-top: 2%;
-  margin-left: 2%;
-  margin-right:10%;
-  width: 96%;
-  height: 50%;
+.App-link:hover {
+  color: #2d5a2d;
+}
 
-} */
+.services-dropdown-container {
+  position: relative;
+  padding-top: 2%;
+  margin: auto;
+}
+
+.services-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-arrow {
+  font-size: 0.7em;
+  transition: transform 0.3s ease;
+}
+
+.services-dropdown-container:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  padding: 10px 0;
+  margin-top: 10px;
+  min-width: 180px;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 12px 20px;
+  color: #2d5a2d;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(74, 95, 74, 0.1);
+}
+
 
 .image-container {
   position: relative;
@@ -69,6 +114,8 @@ html, body {
   margin-right:10%;
   width: 96%;
   height: 50vh;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 .text-block {
@@ -76,7 +123,7 @@ html, body {
   bottom: 5px;
   left: 0;
   width: 100%;
-  background-color: rgba(255,250,230); /* semi-transparent background */
+  background-color: rgba(255,250,230, 0.9);
   color: green;
   font-size: 20em;
   text-align: center;
@@ -84,6 +131,8 @@ html, body {
   font-size: 35px;
   width: 50%;
   margin-left: 25%;
+  border-radius: 10px;
+  font-weight: 600;
 }
 
 .TwoPic {
@@ -94,6 +143,11 @@ html, body {
   margin-right:10%;
   width: 96%;
   height: auto;
+  gap: 20px;
+}
+
+.text-block1, .text-block2 {
+  flex: 1;
 }
 
 .App-pic1 {
@@ -101,14 +155,71 @@ html, body {
   width: 100%;
   height: auto;
   margin-top: 2%;
-  margin-left: 2%;
-  margin-right:10%;
   width: 96%;
-  height: 50%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
-.title1 ,.title2{
-  margin-left: 40%;
+.title1, .title2 {
+  text-align: center;
   color: green;
-  margin-top:5%;
+  margin-top: 5%;
+  font-size: 1.8em;
+}
+
+.Client-testimonials {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background-color: rgb(255,250,230);
+}
+
+.testimonials-title {
+  text-align: center;
+  color: #2d5a2d;
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .TwoPic {
+    flex-direction: column;
+  }
+  
+  .text-block {
+    font-size: 24px;
+    width: 80%;
+    margin-left: 10%;
+  }
+  
+  .App-logo {
+    width: 40%;
+  }
+  
+  .App-header {
+    flex-wrap: wrap;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }

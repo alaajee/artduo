@@ -3,7 +3,7 @@ import Testimonial from './Testimonial';
 import picture from './logo_no_bg.png';
 import picture1 from './pic.jpeg';
 
-function App() {
+function Home() {
   const testimonials = [
     {
       name: "Reese Miller",
@@ -42,11 +42,11 @@ function App() {
       <header className="App-header">
         <img src={picture} className="App-logo" alt="logo" />
 
-        <a href='#' className="App-link"> HOME </a>
+        <a href='/' className="App-link"> HOME </a>
         <a href='/aboutus' className="App-link"> ABOUT US </a>
-        <a href='#' className="App-link"> SERVICES </a>
-        <a href='#' className="App-link"> ART STORE </a>
-        <a href='#' className="App-link"> CONTACT US </a>
+        <a href='/services' className="App-link"> SERVICES </a>
+        <a href='/artstore' className="App-link"> ART STORE </a>
+        <a href='/contact' className="App-link"> CONTACT US </a>
 
       </header>
 
@@ -71,7 +71,7 @@ function App() {
     </div>
 
     <div className="Client-testimonials">
-      <h1 className="testimonials-title">Clients Testimonials</h1>
+      <h1 className="testimonials-title">Client Testimonials</h1>
       <div className="testimonials-grid">
         {testimonials.map((testimonial, index) => (
           <Testimonial 
@@ -88,4 +88,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
