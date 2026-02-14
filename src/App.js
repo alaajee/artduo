@@ -42,11 +42,11 @@ function App() {
       <header className="App-header">
         <img src={picture} className="App-logo" alt="logo" />
 
-        <a href='#' className="App-link"> HOME </a>
+        <a href='/' className="App-link"> HOME </a>
         <a href='/aboutus' className="App-link"> ABOUT US </a>
-        <a href='#' className="App-link"> SERVICES </a>
-        <a href='#' className="App-link"> ART STORE </a>
-        <a href='#' className="App-link"> CONTACT US </a>
+        <a href='' className="App-link"> SERVICES </a>
+        <a href='' className="App-link"> ART STORE </a>
+        <a href='' className="App-link"> CONTACT US </a>
 
       </header>
 
