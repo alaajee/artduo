@@ -4,6 +4,7 @@ import TeamMember from './TeamMember';
 import picture from './logo_no_bg.png';
 import picture1 from './pic.jpeg';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function AboutUs() {
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
@@ -12,12 +13,12 @@ function AboutUs() {
     {
       name: "Racha Bentahar",
       title: "Ceramic artist & clay enthusiast",
-      image: picture1 // Replace with actual image
+      image: picture1
     },
     {
       name: "Safae El Ouahabi",
       title: "Painter and visual artist",
-      image: picture1 // Replace with actual image
+      image: picture1
     }
   ];
 
@@ -26,29 +27,29 @@ function AboutUs() {
       <header className="App-header">
         <img src={picture} className="App-logo" alt="logo" />
 
-        <a href='/' className="App-link"> HOME </a>
-        <a href='/aboutus' className="App-link"> ABOUT US </a>
+        <Link to="/" className="App-link"> HOME </Link>
+        <Link to="/aboutus" className="App-link"> ABOUT US </Link>
         
         <div 
           className="services-dropdown-container"
           onMouseEnter={() => setShowServicesDropdown(true)}
           onMouseLeave={() => setShowServicesDropdown(false)}
         >
-          <a href='/services' className="App-link services-link">
+          <Link to="/services" className="App-link services-link">
             SERVICES
             <span className="dropdown-arrow">▼</span>
-          </a>
+          </Link>
           {showServicesDropdown && (
             <div className="dropdown-menu">
-              <a href="/services#workshops" className="dropdown-item">WORKSHOPS</a>
-              <a href="/services#teambuilding" className="dropdown-item">TEAM BUILDING</a>
-              <a href="/services#privateevents" className="dropdown-item">PRIVATE EVENTS</a>
+              <Link to="/services" className="dropdown-item">WORKSHOPS</Link>
+              <Link to="/services" className="dropdown-item">TEAM BUILDING</Link>
+              <Link to="/services" className="dropdown-item">PRIVATE EVENTS</Link>
             </div>
           )}
         </div>
-
-        <a href='/artstore' className="App-link"> ART STORE </a>
-        <a href='/contact' className="App-link"> CONTACT US </a>
+        
+        <Link to="/artstore" className="App-link"> ART STORE </Link>
+        <Link to="/contact" className="App-link"> CONTACT US </Link>
       </header>
 
       <div className="About-us-section">

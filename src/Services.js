@@ -2,6 +2,7 @@ import './App.css';
 import './Services.css';
 import picture from './logo_no_bg.png';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Services() {
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
@@ -11,33 +12,32 @@ function Services() {
       <header className="App-header">
         <img src={picture} className="App-logo" alt="logo" />
 
-        <a href='/' className="App-link"> HOME </a>
-        <a href='/aboutus' className="App-link"> ABOUT US </a>
+        <Link to="/" className="App-link"> HOME </Link>
+        <Link to="/aboutus" className="App-link"> ABOUT US </Link>
         
         <div 
           className="services-dropdown-container"
           onMouseEnter={() => setShowServicesDropdown(true)}
           onMouseLeave={() => setShowServicesDropdown(false)}
         >
-          <a href='/services' className="App-link services-link">
+          <Link to="/services" className="App-link services-link">
             SERVICES
             <span className="dropdown-arrow">▼</span>
-          </a>
+          </Link>
           {showServicesDropdown && (
             <div className="dropdown-menu">
-              <a href="/services#workshops" className="dropdown-item">WORKSHOPS</a>
-              <a href="/services#teambuilding" className="dropdown-item">TEAM BUILDING</a>
-              <a href="/services#privateevents" className="dropdown-item">PRIVATE EVENTS</a>
+              <Link to="/services" className="dropdown-item">WORKSHOPS</Link>
+              <Link to="/services" className="dropdown-item">TEAM BUILDING</Link>
+              <Link to="/services" className="dropdown-item">PRIVATE EVENTS</Link>
             </div>
           )}
         </div>
 
-        <a href='/artstore' className="App-link"> ART STORE </a>
-        <a href='/contact' className="App-link"> CONTACT US </a>
+        <Link to="/artstore" className="App-link"> ART STORE </Link>
+        <Link to="/contact" className="App-link"> CONTACT US </Link>
       </header>
 
       <div className="services-content">
-        {/* Workshops Section */}
         <section id="workshops" className="service-section workshops-section">
           <h1 className="section-title">Workshops</h1>
           
@@ -49,7 +49,6 @@ function Services() {
           </div>
         </section>
 
-        {/* How to Book Section */}
         <section className="booking-section">
           <h2 className="booking-title">HOW TO BOOK ?</h2>
           <p className="booking-subtitle">
@@ -102,7 +101,6 @@ function Services() {
           </div>
         </section>
 
-        {/* Team Building Section */}
         <section id="teambuilding" className="service-section">
           <h1 className="section-title">Team Building</h1>
           <div className="service-description">
@@ -110,7 +108,6 @@ function Services() {
           </div>
         </section>
 
-        {/* Private Events Section */}
         <section id="privateevents" className="service-section">
           <h1 className="section-title">Private Events</h1>
           <div className="service-description">

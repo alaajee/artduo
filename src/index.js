@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     <HashRouter>  {/* HashRouter NOT BrowserRouter */}
       <Routes>
-        <Route path="/artduo/#" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/services" element={<Services />} />
         {/* Add more routes as needed */}
