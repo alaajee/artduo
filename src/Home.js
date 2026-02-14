@@ -2,6 +2,7 @@ import './App.css';
 import Testimonial from './Testimonial';
 import picture from './logo_no_bg.png';
 import picture1 from './pic.jpeg';
+import { Link } from 'react-router-dom';  // ADD THIS
 
 function Home() {
   const testimonials = [
@@ -18,7 +19,7 @@ function Home() {
     {
       name: "Richard Sanchez",
       rating: 5,
-      text: "I joined just for the experience,not expecting much because I hadn’t painted in a long time. But I loved every moment — it was inspiring and refreshing!"
+      text: "I joined just for the experience,not expecting much because I hadn't painted in a long time. But I loved every moment — it was inspiring and refreshing!"
     },
     {
       name: "Pedro Fernandes",
@@ -28,12 +29,12 @@ function Home() {
     {
       name: "Juliana Silva",
       rating: 5,
-      text: "it’s been years since I painted, but this outdoor session gave me so much joy. Great vibes, great people, and a unique way to enjoy the city."
+      text: "it's been years since I painted, but this outdoor session gave me so much joy. Great vibes, great people, and a unique way to enjoy the city."
     },
     {
       name: "Rufus Stewart",
       rating: 5,
-      text: "I was nervous at first, but the experience was beyond amazing. You don’t need to be an artist to have fun — I left relaxed and happy with my artwork."
+      text: "I was nervous at first, but the experience was beyond amazing. You don't need to be an artist to have fun — I left relaxed and happy with my artwork."
     }
   ];
 
@@ -42,11 +43,11 @@ function Home() {
       <header className="App-header">
         <img src={picture} className="App-logo" alt="logo" />
 
-        <a href='/' className="App-link"> HOME </a>
-        <a href='/aboutus' className="App-link"> ABOUT US </a>
-        <a href='/services' className="App-link"> SERVICES </a>
-        <a href='/artstore' className="App-link"> ART STORE </a>
-        <a href='/contact' className="App-link"> CONTACT US </a>
+        <Link to="/" className="App-link"> HOME </Link>
+        <Link to="/aboutus" className="App-link"> ABOUT US </Link>
+        <Link to="/services" className="App-link"> SERVICES </Link>
+        <Link to="/artstore" className="App-link"> ART STORE </Link>
+        <Link to="/contact" className="App-link"> CONTACT US </Link>
 
       </header>
 
