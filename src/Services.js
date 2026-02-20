@@ -1,6 +1,10 @@
 import './App.css';
 import './Services.css';
 import picture from './logo_no_bg.png';
+import picture2 from './picture10.jpeg';
+import picture3 from './picture11.jpeg';
+import picture4 from './picture12.jpeg';
+import picture5 from './picture13.jpeg';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -101,17 +105,142 @@ function Services() {
           </div>
         </section>
 
-        <section id="teambuilding" className="service-section">
+        <section id="teambuilding" className="service-section teambuilding-section">
           <h1 className="section-title">Team Building</h1>
-          <div className="service-description">
-            <p className="service-text">Coming soon...</p>
+          <p className="teambuilding-subtitle">
+            Strengthen your team spirit and creativity with our<br />
+            interactive art workshops
+          </p>
+
+          <h2 className="why-title">Why teams love it :</h2>
+
+          <div className="teambuilding-cards">
+            <div className="teambuilding-card">
+              <p>Encourages creativity &amp; fresh ideas</p>
+            </div>
+            <div className="teambuilding-card">
+              <p>A fun break from routine</p>
+            </div>
+            <div className="teambuilding-card">
+              <p>Suitable for small or large teams</p>
+            </div>
+            <div className="teambuilding-card">
+              <p>We bring everything to your workplace</p>
+            </div>
           </div>
         </section>
 
-        <section id="privateevents" className="service-section">
-          <h1 className="section-title">Private Events</h1>
-          <div className="service-description">
-            <p className="service-text">Coming soon...</p>
+        <section className="teambuilding-booking-section">
+          <h2 className="teambuilding-booking-title">Book your next team building</h2>
+          <div className="teambuilding-booking-layout">
+            <div className="teambuilding-booking-image">
+              <img src="/images/teambuilding-photo.jpg" alt="Art workshop" className="booking-photo" />
+            </div>
+            <form className="teambuilding-form" onSubmit={(e) => e.preventDefault()}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Full Name</label>
+                  <input type="text" className="form-input" />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Company Name</label>
+                  <input type="text" className="form-input" />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Phone Number</label>
+                  <input type="tel" className="form-input" />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Email</label>
+                  <input type="email" className="form-input" />
+                </div>
+              </div>
+              <div className="form-group form-group-full">
+                <label className="form-label">Message</label>
+                <textarea className="form-textarea"></textarea>
+              </div>
+              <button type="submit" className="book-now-btn">BOOK NOW</button>
+            </form>
+          </div>
+        </section>
+
+        <section id="privateevents" className="service-section privateevents-section">
+          <h1 className="section-title privateevents-title">PRIVATE EVENTS</h1>
+          <p className="privateevents-subtitle">We design custom artistic experiences for your special moments:</p>
+
+          <div className="privateevents-grid">
+            <div className="privateevent-item">
+              <div className="privateevent-img-wrap">
+                <img src={picture2} alt="Birthdays" className="privateevent-img" />
+              </div>
+              <p className="privateevent-label">Birthdays</p>
+            </div>
+
+            <div className="privateevent-item">
+              <div className="privateevent-img-wrap">
+                <img src={picture3} alt="Family or friends gatherings" className="privateevent-img" />
+              </div>
+              <p className="privateevent-label">Family or friends gatherings</p>
+            </div>
+
+            <div className="privateevent-item">
+              <div className="privateevent-img-wrap">
+                <img src={picture4} alt="Henna nights & pre-weddings" className="privateevent-img" />
+              </div>
+              <p className="privateevent-label">Henna nights &amp; pre-weddings</p>
+            </div>
+
+            <div className="privateevent-item">
+              <div className="privateevent-img-wrap">
+                <img src={picture5} alt="Gender reveals" className="privateevent-img" />
+              </div>
+              <p className="privateevent-label">Gender reveals</p>
+            </div>
+
+            <div className="privateevent-item">
+              <div className="privateevent-img-wrap">
+                <img src={picture2} alt="Moroccan or boho-themed events" className="privateevent-img" />
+              </div>
+              <p className="privateevent-label">Moroccan or boho-themed events</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="teambuilding-booking-section">
+          <h2 className="teambuilding-booking-title">Book your next private event</h2>
+          <div className="teambuilding-booking-layout">
+            <div className="teambuilding-booking-image">
+              <img src="/images/privateevent-photo.jpg" alt="Private event" className="booking-photo" />
+            </div>
+            <form className="teambuilding-form" onSubmit={(e) => e.preventDefault()}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Full Name</label>
+                  <input type="text" className="form-input" />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Event Type</label>
+                  <input type="text" className="form-input" />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Phone Number</label>
+                  <input type="tel" className="form-input" />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Email</label>
+                  <input type="email" className="form-input" />
+                </div>
+              </div>
+              <div className="form-group form-group-full">
+                <label className="form-label">Message</label>
+                <textarea className="form-textarea"></textarea>
+              </div>
+              <button type="submit" className="book-now-btn">BOOK NOW</button>
+            </form>
           </div>
         </section>
       </div>

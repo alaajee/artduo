@@ -1,0 +1,98 @@
+/* ── Contact Us Page ── */
+
+.contact-content {
+    padding: 80px 200px;
+    min-height: 100vh;
+  }
+  
+  .contact-title {
+    font-family: 'Georgia', serif;
+    font-size: 2.8rem;
+    color: #2d5a27;
+    text-align: center;
+    letter-spacing: 0.2em;
+    font-weight: normal;
+    margin-bottom: 60px;
+  }
+  
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  .contact-item:hover {
+    opacity: 0.75;
+  }
+  
+  .contact-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+    background:
+      linear-gradient(#f5f5e8, #f5f5e8) padding-box,
+      linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) border-box;
+  }
+  
+  /* Instagram icon — no filled background, gradient border only */
+  .contact-icon .contact-svg {
+    width: 38px;
+    height: 38px;
+  }
+  
+  /* TikTok icon — black filled circle */
+  .contact-icon-tiktok {
+    background: #000 !important;
+    border: none !important;
+  }
+  
+  .contact-icon-tiktok .contact-svg {
+    width: 34px;
+    height: 34px;
+    fill: white;
+  }
+  
+  /* Email icon — blue filled circle */
+  .contact-icon-email {
+    background: #4a90d9 !important;
+    border: none !important;
+  }
+  
+  .contact-icon-email .contact-svg {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .contact-handle {
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    color: #2d5a27;
+    font-style: italic;
+    letter-spacing: 0.08em;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-content {
+      padding: 60px 30px;
+    }
+    .contact-handle {
+      font-size: 1.2rem;
+    }
+    .contact-icon {
+      width: 52px;
+      height: 52px;
+    }
+  }

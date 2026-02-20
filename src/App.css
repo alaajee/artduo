@@ -12,7 +12,7 @@ html, body {
   overflow-x: hidden;
 }
 
-.App{
+.App {
   background-color: rgb(255,250,230);
   min-height: 100vh;
   padding-bottom: 50px;
@@ -21,6 +21,10 @@ html, body {
 .App-header {
   background-color: rgb(255,250,230);
   display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  position: relative;
+  flex-wrap: wrap;
 }
 
 .App-logo {
@@ -92,7 +96,6 @@ html, body {
   background-color: rgba(74, 95, 74, 0.1);
 }
 
-
 .image-container {
   position: relative;
   display: block;
@@ -100,7 +103,7 @@ html, body {
   height: auto;
   margin-top: 2%;
   margin-left: 2%;
-  margin-right:10%;
+  margin-right: 10%;
   width: 96%;
   height: 50vh;
 }
@@ -111,7 +114,7 @@ html, body {
   height: auto;
   margin-top: 2%;
   margin-left: 2%;
-  margin-right:10%;
+  margin-right: 10%;
   width: 96%;
   height: 50vh;
   object-fit: cover;
@@ -125,7 +128,6 @@ html, body {
   width: 100%;
   background-color: rgba(255,250,230, 0.9);
   color: green;
-  font-size: 20em;
   text-align: center;
   padding: 10px 0;
   font-size: 35px;
@@ -140,7 +142,7 @@ html, body {
   justify-content: space-between;
   margin-top: 2%;
   margin-left: 2%;
-  margin-right:10%;
+  margin-right: 10%;
   width: 96%;
   height: auto;
   gap: 20px;
@@ -191,7 +193,6 @@ html, body {
   padding: 0 40px;
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -199,25 +200,115 @@ html, body {
   }
 }
 
+/* ── HAMBURGER (caché sur desktop) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  margin-left: auto;
+  z-index: 1001;
+}
+
+.bar {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: #2d5a2d;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* nav-links : row sur desktop, caché sur mobile */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* ── MOBILE ── */
 @media (max-width: 768px) {
+  .App-header {
+    flex-wrap: wrap;
+    padding: 12px 16px;
+  }
+
+  .App-logo {
+    width: 70px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Cacher le nav par défaut sur mobile */
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background-color: rgb(255,250,230);
+    padding: 12px 0;
+    border-top: 1px solid rgba(45, 90, 45, 0.15);
+    margin-top: 8px;
+  }
+
+  /* Afficher quand ouvert */
+  .nav-links.open {
+    display: flex;
+  }
+
+  .App-link {
+    padding: 14px 16px;
+    margin: 0;
+    width: 100%;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(45, 90, 45, 0.08);
+  }
+
+  .services-dropdown-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .services-dropdown-container .App-link {
+    padding: 14px 16px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    background-color: rgba(45, 90, 45, 0.05);
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+  }
+
+  .dropdown-item {
+    padding: 12px 32px;
+    border-bottom: 1px solid rgba(45, 90, 45, 0.05);
+  }
+
   .TwoPic {
     flex-direction: column;
   }
-  
+
   .text-block {
     font-size: 24px;
     width: 80%;
     margin-left: 10%;
   }
-  
-  .App-logo {
-    width: 40%;
-  }
-  
-  .App-header {
-    flex-wrap: wrap;
-  }
-  
+
   .testimonials-grid {
     grid-template-columns: 1fr;
     gap: 20px;

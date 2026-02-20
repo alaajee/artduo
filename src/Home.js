@@ -2,6 +2,10 @@ import './App.css';
 import Testimonial from './Testimonial';
 import picture from './logo_no_bg.png';
 import picture1 from './pic.jpeg';
+import picture2 from './picture10.jpeg';
+import picture3 from './picture11.jpeg';
+import picture4 from './picture12.jpeg';
+import picture5 from './picture13.jpeg';
 import { Link } from 'react-router-dom';  // ADD THIS
 
 function Home() {
@@ -63,11 +67,11 @@ function Home() {
     <div className="TwoPic">
       <div className="text-block1">
       <h1 className="title1">Our services</h1>
-      <img src={picture1} className="App-pic1" alt="picture" />
+      <img src={picture2} className="App-pic1" alt="picture" />
       </div>
       <div className="text-block2">
       <h1 className="title2">Client Testimonials</h1>
-      <img src={picture1} className="App-pic1" alt="picture" />
+      <img src={picture4} className="App-pic1" alt="picture" />
       </div>
     </div>
 
