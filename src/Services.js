@@ -5,11 +5,23 @@ import picture2 from './picture10.jpeg';
 import picture3 from './picture11.jpeg';
 import picture4 from './picture12.jpeg';
 import picture5 from './picture13.jpeg';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 function Services() {
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   return (
     <div className="App">
@@ -30,9 +42,9 @@ function Services() {
           </Link>
           {showServicesDropdown && (
             <div className="dropdown-menu">
-              <Link to="/services" className="dropdown-item">WORKSHOPS</Link>
-              <Link to="/services" className="dropdown-item">TEAM BUILDING</Link>
-              <Link to="/services" className="dropdown-item">PRIVATE EVENTS</Link>
+              <Link to="/services#workshops" className="dropdown-item">WORKSHOPS</Link>
+              <Link to="/services#teambuilding" className="dropdown-item">TEAM BUILDING</Link>
+              <Link to="/services#privateevents" className="dropdown-item">PRIVATE EVENTS</Link>
             </div>
           )}
         </div>
