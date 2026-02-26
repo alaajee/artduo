@@ -2,11 +2,9 @@ import './App.css';
 import './AboutUs.css';
 import TeamMember from './TeamMember';
 import picture from './logo_no_bg.png';
-import picture1 from './pic.jpeg';
-import picture2 from './picture10.jpeg';
-import picture3 from './picture11.jpeg';
-import picture4 from './picture12.jpeg';
-import picture5 from './picture13.jpeg';
+import picture1 from './racha.jpg';
+import picture2 from './safae.jpg';
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 

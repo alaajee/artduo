@@ -96,73 +96,67 @@ html, body {
   background-color: rgba(74, 95, 74, 0.1);
 }
 
+/* ── REPLACE these blocks in your App.css ── */
+
+/* Hero image container — must be relative so text overlays work */
 .image-container {
   position: relative;
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-top: 2%;
-  margin-left: 2%;
-  margin-right: 10%;
+  margin: 2% 2% 0 2%;
   width: 96%;
-  height: 50vh;
+  height: 60vh;           /* taller hero */
 }
 
+/* Hero image — must fill container completely */
 .App-pic {
   display: block;
   width: 100%;
-  height: auto;
-  margin-top: 2%;
-  margin-left: 2%;
-  margin-right: 10%;
-  width: 96%;
-  height: 50vh;
+  height: 100%;           /* fill the container height */
   object-fit: cover;
   border-radius: 15px;
+  margin: 0;              /* remove old margins that fought the container */
 }
 
+/* Text overlay — sits ON the image */
 .text-block {
   position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: 100%;
-  background-color: rgba(255,250,230, 0.9);
+  bottom: 20px;           /* was 5px — give it more breathing room */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  background-color: rgba(255, 250, 230, 0.9);
   color: green;
   text-align: center;
   padding: 10px 0;
   font-size: 35px;
-  width: 50%;
-  margin-left: 25%;
   border-radius: 10px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
+/* Two side-by-side section */
 .TwoPic {
   display: flex;
   justify-content: space-between;
-  margin-top: 2%;
-  margin-left: 2%;
-  margin-right: 10%;
+  align-items: flex-start;
+  margin: 2% 2% 0 2%;
   width: 96%;
-  height: auto;
   gap: 20px;
 }
 
 .text-block1, .text-block2 {
   flex: 1;
+  min-width: 0;
 }
 
+/* Both side images — same fixed height so they match */
 .App-pic1 {
   display: block;
   width: 100%;
-  height: auto;
-  margin-top: 2%;
-  width: 96%;
-  height: 300px;
+  height: 350px;          /* fixed height so both are equal */
   object-fit: cover;
   border-radius: 15px;
+  margin-top: 2%;
 }
-
 .title1, .title2 {
   text-align: center;
   color: green;
