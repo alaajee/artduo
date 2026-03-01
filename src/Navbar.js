@@ -1,52 +1,71 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import picture from './logo_no_bg.png';
-import './App.css';
+import './Navbar.css';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+    setServicesOpen(false);
+  }, [location]);
+
+  const isActive = (path) => location.pathname === path;
 
   return (
-    <header className="App-header">
-      <img src={picture} className="App-logo" alt="logo" />
+    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+      <Link to="/" className="navbar__logo-link">
+        <img src={picture} className="navbar__logo" alt="logo" />
+      </Link>
 
-      {/* Hamburger button — visible uniquement sur mobile */}
       <button
-        className="hamburger"
+        className={`navbar__hamburger ${menuOpen ? 'open' : ''}`}
         onClick={() => setMenuOpen(!menuOpen)}
         aria-label="Toggle menu"
       >
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
+        <span className="navbar__bar" />
+        <span className="navbar__bar" />
+        <span className="navbar__bar" />
       </button>
 
-      {/* Nav links */}
-      <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <Link to="/" className="App-link" onClick={() => setMenuOpen(false)}>HOME</Link>
-        <Link to="/aboutus" className="App-link" onClick={() => setMenuOpen(false)}>ABOUT US</Link>
+      <nav className={`navbar__links ${menuOpen ? 'open' : ''}`}>
+        <Link to="/" className={`navbar__link ${isActive('/') ? 'active' : ''}`}>Home</Link>
+        <Link to="/aboutus" className={`navbar__link ${isActive('/aboutus') ? 'active' : ''}`}>About</Link>
 
+        {/* Services with dropdown */}
         <div
-          className="services-dropdown-container"
-          onMouseEnter={() => setShowServicesDropdown(true)}
-          onMouseLeave={() => setShowServicesDropdown(false)}
+          className={`navbar__dropdown-wrap ${servicesOpen ? 'open' : ''}`}
+          onMouseEnter={() => setServicesOpen(true)}
+          onMouseLeave={() => setServicesOpen(false)}
         >
-          <Link to="/services" className="App-link services-link" onClick={() => setMenuOpen(false)}>
-            SERVICES
-            <span className="dropdown-arrow">▼</span>
+          <Link
+            to="/services"
+            className={`navbar__link navbar__link--arrow ${isActive('/services') ? 'active' : ''}`}
+            onClick={() => setServicesOpen(!servicesOpen)}
+          >
+            Services
+            <span className="navbar__arrow">▾</span>
           </Link>
-          {showServicesDropdown && (
-            <div className="dropdown-menu">
-              <Link to="/services" className="dropdown-item" onClick={() => { setMenuOpen(false); setShowServicesDropdown(false); }}>WORKSHOPS</Link>
-              <Link to="/services" className="dropdown-item" onClick={() => { setMenuOpen(false); setShowServicesDropdown(false); }}>TEAM BUILDING</Link>
-              <Link to="/services" className="dropdown-item" onClick={() => { setMenuOpen(false); setShowServicesDropdown(false); }}>PRIVATE EVENTS</Link>
-            </div>
-          )}
+          <div className="navbar__dropdown">
+            <Link to="/services" className="navbar__dropdown-item">Workshops</Link>
+            <Link to="/services" className="navbar__dropdown-item">Team Building</Link>
+            <Link to="/services" className="navbar__dropdown-item">Private Events</Link>
+          </div>
         </div>
 
-        <Link to="/artstore" className="App-link" onClick={() => setMenuOpen(false)}>ART STORE</Link>
-        <Link to="/contact" className="App-link" onClick={() => setMenuOpen(false)}>CONTACT US</Link>
+        <Link to="/artstore" className={`navbar__link ${isActive('/artstore') ? 'active' : ''}`}>Art Store</Link>
+        <Link to="/contact" className={`navbar__link navbar__link--cta ${isActive('/contact') ? 'active' : ''}`}>Contact</Link>
       </nav>
     </header>
   );

@@ -1,11 +1,10 @@
 import './App.css';
 import './ArtStore.css';
-import picture from './logo_no_bg.png';
+import Navbar from './Navbar';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import picture1 from './pic1.jpg';
-import picture2 from './pic2.jpg';  
+import picture2 from './pic2.jpg';
 import picture3 from './pic3.jpg';
 import picture4 from './pic4.jpg';
 import picture5 from './pic5.jpg';
@@ -23,7 +22,6 @@ const artworks = [
 ];
 
 function ArtStore() {
-  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
   const [selectedArtwork, setSelectedArtwork] = useState(null);
 
   const openLightbox = (artwork) => setSelectedArtwork(artwork);
@@ -31,33 +29,7 @@ function ArtStore() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={picture} className="App-logo" alt="logo" />
-
-        <Link to="/" className="App-link"> HOME </Link>
-        <Link to="/aboutus" className="App-link"> ABOUT US </Link>
-
-        <div
-          className="services-dropdown-container"
-          onMouseEnter={() => setShowServicesDropdown(true)}
-          onMouseLeave={() => setShowServicesDropdown(false)}
-        >
-          <Link to="/services" className="App-link services-link">
-            SERVICES
-            <span className="dropdown-arrow">▼</span>
-          </Link>
-          {showServicesDropdown && (
-            <div className="dropdown-menu">
-              <Link to="/services" className="dropdown-item">WORKSHOPS</Link>
-              <Link to="/services" className="dropdown-item">TEAM BUILDING</Link>
-              <Link to="/services" className="dropdown-item">PRIVATE EVENTS</Link>
-            </div>
-          )}
-        </div>
-
-        <Link to="/artstore" className="App-link active-link"> ART STORE </Link>
-        <Link to="/contact" className="App-link"> CONTACT US </Link>
-      </header>
+      <Navbar />
 
       <div className="artstore-content">
         <header className="artstore-header">
@@ -91,7 +63,6 @@ function ArtStore() {
         </p>
       </div>
 
-      {/* Lightbox Modal */}
       {selectedArtwork && (
         <div className="lightbox-overlay" onClick={closeLightbox}>
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>

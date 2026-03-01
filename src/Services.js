@@ -1,154 +1,129 @@
 import './App.css';
 import './Services.css';
-import picture from './logo_no_bg.png';
+import Navbar from './Navbar';
 import picture2 from './picture10.jpeg';
 import picture3 from './picture11.jpeg';
 import picture4 from './picture12.jpeg';
 import picture5 from './picture13.jpeg';
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function Services() {
-  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     if (location.hash) {
       const el = document.querySelector(location.hash);
       if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
       }
     }
   }, [location]);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={picture} className="App-logo" alt="logo" />
-
-        <Link to="/" className="App-link"> HOME </Link>
-        <Link to="/aboutus" className="App-link"> ABOUT US </Link>
-        
-        <div 
-          className="services-dropdown-container"
-          onMouseEnter={() => setShowServicesDropdown(true)}
-          onMouseLeave={() => setShowServicesDropdown(false)}
-        >
-          <Link to="/services" className="App-link services-link">
-            SERVICES
-            <span className="dropdown-arrow">▼</span>
-          </Link>
-          {showServicesDropdown && (
-            <div className="dropdown-menu">
-              <Link to="/services#workshops" className="dropdown-item">WORKSHOPS</Link>
-              <Link to="/services#teambuilding" className="dropdown-item">TEAM BUILDING</Link>
-              <Link to="/services#privateevents" className="dropdown-item">PRIVATE EVENTS</Link>
-            </div>
-          )}
-        </div>
-
-        <Link to="/artstore" className="App-link"> ART STORE </Link>
-        <Link to="/contact" className="App-link"> CONTACT US </Link>
-      </header>
+      <Navbar />
 
       <div className="services-content">
-        <section id="workshops" className="service-section workshops-section">
-          <h1 className="section-title">Workshops</h1>
-          
-          <div className="workshops-description">
-            <p className="workshop-text">Every week, we host creative workshops across Rabat.</p>
-            <p className="workshop-text">Each session has a different theme: painting, clay, or mixed media.</p>
-            <p className="workshop-text">We provide all the materials, just bring your curiosity!</p>
-            <p className="workshop-text-emphasis">Open to all levels: kids, adults, beginners, and art lovers.</p>
+
+        {/* ── WORKSHOPS ── */}
+        <section id="workshops" className="svc-section">
+          <div className="svc-section__inner">
+            <span className="section-tag">Weekly</span>
+            <h1 className="svc-title">Workshops</h1>
+            <div className="svc-title-line" />
+
+            <div className="workshops-prose">
+              <p>Every week, we host creative workshops across Rabat.</p>
+              <p>Each session has a different theme: painting, clay, or mixed media.</p>
+              <p>We provide all the materials — just bring your curiosity!</p>
+              <p className="workshops-prose__em">Open to all levels: kids, adults, beginners, and art lovers.</p>
+            </div>
           </div>
         </section>
 
+        {/* ── HOW TO BOOK ── */}
         <section className="booking-section">
-          <h2 className="booking-title">HOW TO BOOK ?</h2>
-          <p className="booking-subtitle">
-            We announce the program weekly in instagram(location, date & time).<br />
-            Here's how you can join us:
-          </p>
-          
-          <a href="https://www.instagram.com/artenduo" target="_blank" rel="noopener noreferrer" className="instagram-handle">
-            <svg className="instagram-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#instagram-gradient)" strokeWidth="2"/>
-              <circle cx="12" cy="12" r="4" stroke="url(#instagram-gradient)" strokeWidth="2"/>
-              <circle cx="18" cy="6" r="1.5" fill="url(#instagram-gradient)"/>
-              <defs>
-                <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#f09433" />
-                  <stop offset="25%" stopColor="#e6683c" />
-                  <stop offset="50%" stopColor="#dc2743" />
-                  <stop offset="75%" stopColor="#cc2366" />
-                  <stop offset="100%" stopColor="#bc1888" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <span className="instagram-text">@ARTENDUO</span>
-          </a>
+          <div className="booking-section__inner">
+            <span className="section-tag">Join Us</span>
+            <h2 className="svc-title svc-title--sm">How to Book</h2>
+            <div className="svc-title-line" />
 
-          <div className="steps-container">
-            <div className="step-card">
-              <h3 className="step-title">Step 1</h3>
-              <div className="step-divider"></div>
-              <p className="step-text">
-                Check our weekly program and choose your favorite workshop
-              </p>
-            </div>
+            <p className="booking-intro">
+              We announce the programme weekly on Instagram with location, date &amp; time.
+            </p>
 
-            <div className="step-card">
-              <h3 className="step-title">Step 2</h3>
-              <div className="step-divider"></div>
-              <p className="step-text">
-                Contact us on Instagram and send us your name + WhatsApp number
-              </p>
-            </div>
+            <a
+              href="https://www.instagram.com/artenduo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="insta-link"
+            >
+              <svg className="insta-icon" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#ig)" strokeWidth="1.5"/>
+                <circle cx="12" cy="12" r="4" stroke="url(#ig)" strokeWidth="1.5"/>
+                <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig)"/>
+                <defs>
+                  <linearGradient id="ig" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#f09433"/>
+                    <stop offset="50%" stopColor="#dc2743"/>
+                    <stop offset="100%" stopColor="#bc1888"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              @artenduo
+            </a>
 
-            <div className="step-card">
-              <h3 className="step-title">Step 3</h3>
-              <div className="step-divider"></div>
-              <p className="step-text">
-                We'll add you to the WhatsApp group with all participants. From there, you can pay your deposit to secure your spot
-              </p>
+            <div className="steps-grid">
+              {[
+                { n: "01", text: "Check our weekly programme and choose your favourite workshop" },
+                { n: "02", text: "Message us on Instagram with your name and WhatsApp number" },
+                { n: "03", text: "We'll add you to the WhatsApp group — pay your deposit to confirm your spot" },
+              ].map(({ n, text }) => (
+                <div className="step-card" key={n}>
+                  <span className="step-num">{n}</span>
+                  <div className="step-divider" />
+                  <p className="step-text">{text}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section id="teambuilding" className="service-section teambuilding-section">
-          <h1 className="section-title">Team Building</h1>
-          <p className="teambuilding-subtitle">
-            Strengthen your team spirit and creativity with our<br />
-            interactive art workshops
-          </p>
+        {/* ── TEAM BUILDING ── */}
+        <section id="teambuilding" className="svc-section svc-section--parchment">
+          <div className="svc-section__inner">
+            <span className="section-tag">Corporate</span>
+            <h1 className="svc-title">Team Building</h1>
+            <div className="svc-title-line" />
+            <p className="svc-subtitle">
+              Strengthen your team spirit and creativity with our interactive art workshops
+            </p>
 
-          <h2 className="why-title">Why teams love it :</h2>
-
-          <div className="teambuilding-cards">
-            <div className="teambuilding-card">
-              <p>Encourages creativity &amp; fresh ideas</p>
-            </div>
-            <div className="teambuilding-card">
-              <p>A fun break from routine</p>
-            </div>
-            <div className="teambuilding-card">
-              <p>Suitable for small or large teams</p>
-            </div>
-            <div className="teambuilding-card">
-              <p>We bring everything to your workplace</p>
+            <p className="why-label">Why teams love it</p>
+            <div className="tb-cards">
+              {[
+                "Encourages creativity & fresh ideas",
+                "A fun break from routine",
+                "Suitable for small or large teams",
+                "We bring everything to your workplace",
+              ].map((text, i) => (
+                <div className="tb-card" key={i}>
+                  <span className="tb-card__num">0{i + 1}</span>
+                  <p>{text}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="teambuilding-booking-section">
-          <h2 className="teambuilding-booking-title">Book your next team building</h2>
-          <div className="teambuilding-booking-layout">
-            <div className="teambuilding-booking-image">
-              <img src="/images/teambuilding-photo.jpg" alt="Art workshop" className="booking-photo" />
-            </div>
-            <form className="teambuilding-form" onSubmit={(e) => e.preventDefault()}>
+        {/* ── TEAM BUILDING BOOKING ── */}
+        <section className="form-section">
+          <div className="form-section__inner">
+            <span className="section-tag">Reserve</span>
+            <h2 className="svc-title svc-title--sm">Book your Team Building</h2>
+            <div className="svc-title-line" />
+            <form className="art-form" onSubmit={(e) => e.preventDefault()}>
               <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Full Name</label>
@@ -169,64 +144,49 @@ function Services() {
                   <input type="email" className="form-input" />
                 </div>
               </div>
-              <div className="form-group form-group-full">
+              <div className="form-group form-group--full">
                 <label className="form-label">Message</label>
-                <textarea className="form-textarea"></textarea>
+                <textarea className="form-textarea" />
               </div>
-              <button type="submit" className="book-now-btn">BOOK NOW</button>
+              <button type="submit" className="art-btn">Send Request</button>
             </form>
           </div>
         </section>
 
-        <section id="privateevents" className="service-section privateevents-section">
-          <h1 className="section-title privateevents-title">PRIVATE EVENTS</h1>
-          <p className="privateevents-subtitle">We design custom artistic experiences for your special moments:</p>
+        {/* ── PRIVATE EVENTS ── */}
+        <section id="privateevents" className="svc-section svc-section--parchment">
+          <div className="svc-section__inner">
+            <span className="section-tag">Bespoke</span>
+            <h1 className="svc-title">Private Events</h1>
+            <div className="svc-title-line" />
+            <p className="svc-subtitle">We design custom artistic experiences for your special moments</p>
 
-          <div className="privateevents-grid">
-            <div className="privateevent-item">
-              <div className="privateevent-img-wrap">
-                <img src={picture2} alt="Birthdays" className="privateevent-img" />
-              </div>
-              <p className="privateevent-label">Birthdays</p>
-            </div>
-
-            <div className="privateevent-item">
-              <div className="privateevent-img-wrap">
-                <img src={picture3} alt="Family or friends gatherings" className="privateevent-img" />
-              </div>
-              <p className="privateevent-label">Family or friends gatherings</p>
-            </div>
-
-            <div className="privateevent-item">
-              <div className="privateevent-img-wrap">
-                <img src={picture4} alt="Henna nights & pre-weddings" className="privateevent-img" />
-              </div>
-              <p className="privateevent-label">Henna nights &amp; pre-weddings</p>
-            </div>
-
-            <div className="privateevent-item">
-              <div className="privateevent-img-wrap">
-                <img src={picture5} alt="Gender reveals" className="privateevent-img" />
-              </div>
-              <p className="privateevent-label">Gender reveals</p>
-            </div>
-
-            <div className="privateevent-item">
-              <div className="privateevent-img-wrap">
-                <img src={picture2} alt="Moroccan or boho-themed events" className="privateevent-img" />
-              </div>
-              <p className="privateevent-label">Moroccan or boho-themed events</p>
+            <div className="events-grid">
+              {[
+                { img: picture2, label: "Birthdays" },
+                { img: picture3, label: "Family & friends gatherings" },
+                { img: picture4, label: "Henna nights & pre-weddings" },
+                { img: picture5, label: "Gender reveals" },
+                { img: picture2, label: "Moroccan or boho-themed events" },
+              ].map(({ img, label }, i) => (
+                <div className="event-card" key={i}>
+                  <div className="event-card__img-wrap">
+                    <img src={img} alt={label} className="event-card__img" />
+                  </div>
+                  <p className="event-card__label">{label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="teambuilding-booking-section">
-          <h2 className="teambuilding-booking-title">Book your next private event</h2>
-          <div className="teambuilding-booking-layout">
-            <div className="teambuilding-booking-image">
-              <img src="/images/privateevent-photo.jpg" alt="Private event" className="booking-photo" />
-            </div>
-            <form className="teambuilding-form" onSubmit={(e) => e.preventDefault()}>
+        {/* ── PRIVATE EVENT BOOKING ── */}
+        <section className="form-section">
+          <div className="form-section__inner">
+            <span className="section-tag">Reserve</span>
+            <h2 className="svc-title svc-title--sm">Book your Private Event</h2>
+            <div className="svc-title-line" />
+            <form className="art-form" onSubmit={(e) => e.preventDefault()}>
               <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Full Name</label>
@@ -247,14 +207,15 @@ function Services() {
                   <input type="email" className="form-input" />
                 </div>
               </div>
-              <div className="form-group form-group-full">
+              <div className="form-group form-group--full">
                 <label className="form-label">Message</label>
-                <textarea className="form-textarea"></textarea>
+                <textarea className="form-textarea" />
               </div>
-              <button type="submit" className="book-now-btn">BOOK NOW</button>
+              <button type="submit" className="art-btn">Send Request</button>
             </form>
           </div>
         </section>
+
       </div>
     </div>
   );

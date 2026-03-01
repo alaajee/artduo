@@ -1,82 +1,173 @@
-.About-us-section {
-  margin-top: 60px;
-  padding: 40px 20px;
-  background-color: rgb(255,250,230);
-  min-height: 70vh;
+/* ─────────────────────────────────────────────
+   ABOUT US PAGE
+   Relies on tokens defined in App.css
+───────────────────────────────────────────── */
+
+/* ── Page Hero ── */
+.about-hero {
+  padding-top: var(--nav-height, 72px);
+  min-height: 34vh;
+  display: flex;
+  align-items: flex-end;
+  background: var(--parchment, #f2ede0);
+  position: relative;
+  overflow: hidden;
 }
 
-.about-us-title {
+/* subtle background texture */
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 70% 50%, rgba(184,151,62,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.about-hero__inner {
+  padding: 48px 72px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.about-hero__title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 300;
+  color: var(--ink, #1a1a14);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.about-hero__line {
+  width: 60px;
+  height: 1px;
+  background: var(--gold, #b8973e);
+  margin-top: 4px;
+}
+
+/* ── Mission ── */
+.about-mission {
+  padding: 90px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.about-mission__inner {
+  max-width: 680px;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  color: #2d5a2d;
-  font-size: 2.5em;
-  margin-bottom: 40px;
-  font-weight: 600;
+  gap: 28px;
 }
 
-.mission-statement {
-  max-width: 900px;
-  margin: 0 auto 60px;
-  padding: 40px 50px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
+.about-mission__lead {
+  font-family: var(--font-body, 'Jost', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage, #6b8f6b);
 }
 
-.mission-text {
-  color: #555;
-  font-size: 1.2em;
-  line-height: 1.8;
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.mission-text strong {
-  color: #2d5a2d;
-  font-weight: 600;
-}
-
-.mission-closing {
-  color: #2d5a2d;
-  font-size: 1.3em;
-  font-weight: 600;
-  margin-top: 30px;
-  line-height: 1.6;
+.about-mission__quote {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400;
   font-style: italic;
+  color: var(--ink, #1a1a14);
+  line-height: 1.35;
+  border: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
 }
 
-.team-section-title {
+/* decorative quotes */
+.about-mission__quote::before {
+  content: '\201C';
+  font-size: 5rem;
+  line-height: 0;
+  position: absolute;
+  top: 0.35em;
+  left: -0.35em;
+  color: var(--gold, #b8973e);
+  opacity: 0.25;
+  font-style: normal;
+}
+
+.about-mission__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(58,90,58,0.12);
+}
+
+.about-mission__body p {
+  font-family: var(--font-body, 'Jost', sans-serif);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #4a4a3a;
+}
+
+.about-mission__closing {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif) !important;
+  font-size: 1.25rem !important;
+  font-style: italic;
+  color: var(--moss, #3a5a3a) !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+}
+
+/* ── Team ── */
+.about-team {
+  background: var(--parchment, #f2ede0);
+  padding: 80px 48px 100px;
+}
+
+.about-team__header {
   text-align: center;
-  color: #2d5a2d;
-  font-size: 2em;
-  margin-bottom: 40px;
-  font-weight: 600;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
-.team-grid {
+.about-team__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 50px;
-  max-width: 1200px;
+  gap: 40px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 40px;
 }
 
+/* ── Responsive ── */
 @media (max-width: 768px) {
-  .mission-statement {
-    padding: 30px 25px;
+  .about-hero__inner {
+    padding: 36px 24px 44px;
   }
-  
-  .mission-text {
-    font-size: 1.1em;
+
+  .about-mission__inner {
+    padding: 0 24px;
   }
-  
-  .mission-closing {
-    font-size: 1.2em;
+
+  .about-team {
+    padding: 60px 24px 70px;
   }
-  
-  .team-grid {
+
+  .about-team__grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 28px;
   }
 }
