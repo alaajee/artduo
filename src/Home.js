@@ -12,34 +12,34 @@ function Home() {
 
   const testimonials = [
     {
-      name: "Reese Miller",
+      name: "Soukayna",
       rating: 5,
-      text: "I hadn't touched a paintbrush in years, but the atmosphere was so relaxing that it felt easy and fun. Such a beautiful way to spend a day outdoors"
+      text: "Thank you guys — it was a greaaat experience, I'm sure it won't be the last time!"
     },
     {
-      name: "Samira Hadid",
+      name: "Asmae",
       rating: 5,
-      text: "Even though I am not experienced in painting, I really enjoyed it. The team made it simple, and I left with a painting I was proud of."
+      text: "Personnellement j'ai bcp aimé ! Merci beaucoup à Racha et Safae et merci aux participants, on a passé un très bon moment ensemble."
     },
     {
-      name: "Richard Sanchez",
+      name: "Imane",
       rating: 5,
-      text: "I joined just for the experience — not expecting much because I hadn't painted in a long time. But I loved every moment, it was inspiring and refreshing!"
+      text: "Merci à Racha et à Safaa pour ce super atelier. C'était un vrai moment de détente, de bonne humeur et de créativité. J'ai adoré votre énergie, votre bienveillance et la belle ambiance que vous avez su créer. Grâce à vous, on est tous repartis avec le sourire et un peu de fierté en regardant nos toiles — bravo et encore merci pour ce beau moment !"
     },
     {
-      name: "Pedro Fernandes",
+      name: "Loubna",
       rating: 5,
-      text: "The workshop was exactly what I needed to disconnect. Even without painting skills, I felt guided, comfortable, and creative again"
+      text: "Merci au team et merci à tous les participants — it was so heartwarming and peaceful."
     },
     {
-      name: "Juliana Silva",
+      name: "Aida",
       rating: 5,
-      text: "It's been years since I painted, but this outdoor session gave me so much joy. Great vibes, great people, and a unique way to enjoy the city."
+      text: "Merci à vous de nous avoir permis de vivre cette belle expérience. Merci pour votre gentillesse, bienveillance et patience... Ravie d'avoir fait votre connaissance."
     },
     {
-      name: "Rufus Stewart",
+      name: "Samira",
       rating: 5,
-      text: "I was nervous at first, but the experience was beyond amazing. You don't need to be an artist to have fun — I left relaxed and happy with my artwork."
+      text: "Merci à vous — ma fille Lina vraiment très satisfaite."
     }
   ];
 

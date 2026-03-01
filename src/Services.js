@@ -5,18 +5,95 @@ import picture2 from './picture10.jpeg';
 import picture3 from './picture11.jpeg';
 import picture4 from './picture12.jpeg';
 import picture5 from './picture13.jpeg';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+
+// ── Reusable booking form ──
+function BookingForm({ endpoint, fields }) {
+  const [values, setValues]   = useState({});
+  const [status, setStatus]   = useState('idle'); // idle | loading | success | error
+  const [message, setMessage] = useState('');
+
+  const handle = (e) =>
+    setValues((v) => ({ ...v, [e.target.name]: e.target.value }));
+
+  const submit = async (e) => {
+    e.preventDefault();
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      const res  = await fetch(`${API_URL}${endpoint}`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(values),
+      });
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || 'Something went wrong.');
+      setStatus('success');
+      setMessage(data.message);
+      setValues({});
+      e.target.reset();
+    } catch (err) {
+      setStatus('error');
+      setMessage(err.message);
+    }
+  };
+
+  return (
+    <form className="art-form" onSubmit={submit}>
+      {fields.map((row, i) => (
+        <div className="form-row" key={i}>
+          {row.map(({ label, name, type = 'text' }) => (
+            <div className="form-group" key={name}>
+              <label className="form-label">{label}</label>
+              <input
+                type={type}
+                name={name}
+                className="form-input"
+                value={values[name] || ''}
+                onChange={handle}
+                required={name === 'fullName' || name === 'email'}
+              />
+            </div>
+          ))}
+        </div>
+      ))}
+
+      <div className="form-group form-group--full">
+        <label className="form-label">Message</label>
+        <textarea
+          name="message"
+          className="form-textarea"
+          value={values.message || ''}
+          onChange={handle}
+        />
+      </div>
+
+      {message && (
+        <p className={`form-feedback form-feedback--${status}`}>
+          {status === 'success' ? '✓ ' : '✕ '}{message}
+        </p>
+      )}
+
+      <button type="submit" className="art-btn" disabled={status === 'loading'}>
+        {status === 'loading' ? 'Sending…' : 'Send Request'}
+      </button>
+    </form>
+  );
+}
+
+// ── Page ──
 function Services() {
   const location = useLocation();
 
   useEffect(() => {
     if (location.hash) {
       const el = document.querySelector(location.hash);
-      if (el) {
-        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
-      }
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
     }
   }, [location]);
 
@@ -32,12 +109,10 @@ function Services() {
             <span className="section-tag">Weekly</span>
             <h1 className="svc-title">Workshops</h1>
             <div className="svc-title-line" />
-
             <div className="workshops-prose">
-              <p>Every week, we host creative workshops across Rabat.</p>
-              <p>Each session has a different theme: painting, clay, or mixed media.</p>
-              <p>We provide all the materials — just bring your curiosity!</p>
-              <p className="workshops-prose__em">Open to all levels: kids, adults, beginners, and art lovers.</p>
+              <p>Every week (or every 15 days), we host creative art workshops in Rabat and Tangier, each session built around a unique theme: painting, clay…</p>
+              <p>We provide all the materials — just bring your curiosity and good vibes.</p>
+              <p className="workshops-prose__em">Our workshops are open to everyone: kids, adults, beginners, art lovers, locals and foreigners.</p>
             </div>
           </div>
         </section>
@@ -48,11 +123,9 @@ function Services() {
             <span className="section-tag">Join Us</span>
             <h2 className="svc-title svc-title--sm">How to Book</h2>
             <div className="svc-title-line" />
-
             <p className="booking-intro">
               We announce the programme weekly on Instagram with location, date &amp; time.
             </p>
-
             <a
               href="https://www.instagram.com/artenduo"
               target="_blank"
@@ -73,12 +146,11 @@ function Services() {
               </svg>
               @artenduo
             </a>
-
             <div className="steps-grid">
               {[
                 { n: "01", text: "Check our weekly programme and choose your favourite workshop" },
                 { n: "02", text: "Message us on Instagram with your name and WhatsApp number" },
-                { n: "03", text: "We'll add you to the WhatsApp group — pay your deposit to confirm your spot" },
+                { n: "03", text: "We'll contact you by WhatsApp, send you all the details and ask you to confirm your spot with a 50 DHS deposit. Your place is officially secured once the deposit is sent." },
               ].map(({ n, text }) => (
                 <div className="step-card" key={n}>
                   <span className="step-num">{n}</span>
@@ -99,7 +171,6 @@ function Services() {
             <p className="svc-subtitle">
               Strengthen your team spirit and creativity with our interactive art workshops
             </p>
-
             <p className="why-label">Why teams love it</p>
             <div className="tb-cards">
               {[
@@ -123,33 +194,19 @@ function Services() {
             <span className="section-tag">Reserve</span>
             <h2 className="svc-title svc-title--sm">Book your Team Building</h2>
             <div className="svc-title-line" />
-            <form className="art-form" onSubmit={(e) => e.preventDefault()}>
-              <div className="form-row">
-                <div className="form-group">
-                  <label className="form-label">Full Name</label>
-                  <input type="text" className="form-input" />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Company Name</label>
-                  <input type="text" className="form-input" />
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label className="form-label">Phone Number</label>
-                  <input type="tel" className="form-input" />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Email</label>
-                  <input type="email" className="form-input" />
-                </div>
-              </div>
-              <div className="form-group form-group--full">
-                <label className="form-label">Message</label>
-                <textarea className="form-textarea" />
-              </div>
-              <button type="submit" className="art-btn">Send Request</button>
-            </form>
+            <BookingForm
+              endpoint="/api/book/teambuilding"
+              fields={[
+                [
+                  { label: 'Full Name',    name: 'fullName' },
+                  { label: 'Company Name', name: 'companyName' },
+                ],
+                [
+                  { label: 'Phone Number', name: 'phone', type: 'tel' },
+                  { label: 'Email',        name: 'email', type: 'email' },
+                ],
+              ]}
+            />
           </div>
         </section>
 
@@ -160,7 +217,6 @@ function Services() {
             <h1 className="svc-title">Private Events</h1>
             <div className="svc-title-line" />
             <p className="svc-subtitle">We design custom artistic experiences for your special moments</p>
-
             <div className="events-grid">
               {[
                 { img: picture2, label: "Birthdays" },
@@ -186,33 +242,19 @@ function Services() {
             <span className="section-tag">Reserve</span>
             <h2 className="svc-title svc-title--sm">Book your Private Event</h2>
             <div className="svc-title-line" />
-            <form className="art-form" onSubmit={(e) => e.preventDefault()}>
-              <div className="form-row">
-                <div className="form-group">
-                  <label className="form-label">Full Name</label>
-                  <input type="text" className="form-input" />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Event Type</label>
-                  <input type="text" className="form-input" />
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label className="form-label">Phone Number</label>
-                  <input type="tel" className="form-input" />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Email</label>
-                  <input type="email" className="form-input" />
-                </div>
-              </div>
-              <div className="form-group form-group--full">
-                <label className="form-label">Message</label>
-                <textarea className="form-textarea" />
-              </div>
-              <button type="submit" className="art-btn">Send Request</button>
-            </form>
+            <BookingForm
+              endpoint="/api/book/privateevent"
+              fields={[
+                [
+                  { label: 'Full Name',  name: 'fullName' },
+                  { label: 'Event Type', name: 'eventType' },
+                ],
+                [
+                  { label: 'Phone Number', name: 'phone', type: 'tel' },
+                  { label: 'Email',        name: 'email', type: 'email' },
+                ],
+              ]}
+            />
           </div>
         </section>
 
